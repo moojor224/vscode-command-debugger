@@ -12,43 +12,33 @@
     "categories": [
         "Other"
     ],
-    "activationEvents": [],
+    "activationEvents": [
+        "*"
+    ],
     "main": "./out/extension.js",
     "contributes": {
-        "commands": [
+        "debuggers": [
             {
-                "command": "vscode-command-debugger.command",
-                "title": "run a command"
-            }
-        ],
-        "snippets": [
-            {
-                "language": "javascript",
-                "path": "./src/snippets.json"
-            }
-        ],
-        "submenus": [
-            {
-                "id": "vscode-command-debugger.submenu",
-                "label": "example extension"
-            }
-        ],
-        "menus": {
-            "editor/context": [
-                {
-                    "submenu": "vscode-command-debugger.submenu",
-                    "group": "vscode-command-debugger"
+                "type": "vscode-command",
+                "languages": [
+                    "*"
+                ],
+                "label": "Run a command",
+                "configurationAttributes": {
+                    "launch": {
+                        "required": [
+                            "command"
+                        ],
+                        "properties": {
+                            "command": {
+                                "type": "string",
+                                "description": "The command to run\nTo get a command's id, go to the extension's page in the extension sidebar, and open the commands menu of the features tab"
+                            }
+                        }
+                    }
                 }
-            ],
-            "REPO_NAME.submenu": [
-                {
-                    "when": "resourceLangId == html",
-                    "command": "vscode-command-debugger.command",
-                    "alt": "vscode-command-debugger.command",
-                    "group": "vscode-command-debugger@1"
-                }
-            ]
-        }
+            }
+        ]
     },
     "scripts": {
         "compile": "tsc -p ./",
@@ -74,5 +64,8 @@
         "glob": "^10.3.3",
         "mocha": "^10.2.0",
         "typescript": "^5.2.2"
+    },
+    "dependencies": {
+        "@vscode/debugadapter": "^1.68.0"
     }
 }

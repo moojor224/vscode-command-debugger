@@ -1,3 +1,3 @@
 # VSCode Command Debugger
 
-readme contents
+provides a debug configuration to launch any extension command
